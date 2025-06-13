@@ -1,3 +1,12 @@
+> [!NOTE]
+> This is a small demonstration of how to use both the previous `AppLoadContext` pattern in React Router at the same time as the new version with `unstable_middleware`, which changes the types of `context` passed to your loaders and actions.
+> This approach relies on the fact that in Typescript, a `class` also declares an implicit `interface` for that class, and that `interface` can be augmented (just like we did with `AppLoadContext`).
+> The implementation does two things:
+> - Patches up the types with `interface` augmentation, making `unstable_RouterContextProvider` extend your custom `AppLoadContext`
+> - Patches up the `loader` and `action` methods in your `ServerBuild` to actually install the fields of `AppLoadContext` onto the context instance, so that it all works at runtime.
+
+---
+
 # Welcome to React Router!
 
 A modern, production-ready template for building full-stack React applications using React Router.
